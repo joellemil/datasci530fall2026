@@ -4,8 +4,12 @@
 # Manage datasets
 import pandas as pd
 
+from urllib import robotparser
+import json
+
 # Work with time data
 import time 
+from datetime import datetime
 
 # Conduct HTTP requests
 import requests
@@ -41,3 +45,5 @@ from selenium.webdriver.common.by      import By
 from selenium.webdriver.support        import expected_conditions as EC
 from selenium.webdriver.chrome.options import Options #to use properties of the chrome webbrowser
 from selenium.webdriver.remote.command import Command # Use to check whether the web driver is active
+from selenium.common.exceptions        import TimeoutException
+from selenium.common.exceptions        import NoSuchElementException
