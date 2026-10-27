@@ -1,0 +1,20 @@
+{
+  "website": "https://shop.standrews.com",
+  "brand": [
+    "J.Lindeberg",
+    "Peter Millar"
+  ],
+  "collection_started": "2026-10-25T12:51:46",
+  "collection_finished": "2026-10-25T12:54:58",
+  "observations_collected": 26,
+  "pages_skipped": 0,
+  "restrictions": {
+    "max_products": 50,
+    "delay_seconds_between_requests": 2
+  },
+  "robots_check": {
+    "starting_url": true,
+    "product_path": true
+  },
+  "errors": []
+}
