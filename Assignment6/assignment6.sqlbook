@@ -13,7 +13,7 @@ You need to run "Execute" on each row, line-by-line. This is <br>
 different from Python, which runs the entire chunk.
 
 -- SQLBook: Code
--- Active: 1710903290079@@127.0.0.1@5432@postgres
+-- Active: 1794502311783@@127.0.0.1@5432@postgres
 
 DROP TABLE IF EXISTS homework_data;
 CREATE TABLE homework_data(driver_id int,
@@ -59,10 +59,11 @@ Hints:
 - In SQL you only need a single equality "="
 - In SQL use single quotes for logical conditions with strings '...'
 -- SQLBook: Code
--- Active: 1710903290079@@127.0.0.1@5432@postgres@public
--- Write your own code
+-- Active: 1794502311783@@127.0.0.1@5432@postgres
 
-
+SELECT * FROM homework_data
+WHERE nationality = 'British'
+ORDER BY driver_name ASC;
 
 -- SQLBook: Markup
 <font size = "5">
@@ -79,12 +80,10 @@ alies, e.g. ``` ... AS ... ```
 
 
 -- SQLBook: Code
--- Active: 1710903290079@@127.0.0.1@5432@postgres@public
--- Write your own code
+-- Active: 1794502311783@@127.0.0.1@5432@postgres
 
-
-
-
+SELECT COUNT(DISTINCT nationality) AS num_nationalities
+FROM homework_data;
 -- SQLBook: Markup
 <font size = "5">
 
@@ -97,10 +96,13 @@ alies, e.g. ``` ... AS ... ```
 
 
 -- SQLBook: Code
--- Active: 1710903290079@@127.0.0.1@5432@postgres@public
--- Write your own code
+-- Active: 1794502311783@@127.0.0.1@5432@postgres
 
-
+SELECT driver_id,
+AVG(lap_times) AS avg_lap_time
+FROM homework_data
+GROUP BY driver_id
+ORDER BY avg_lap_time DESC;
 
 
 -- SQLBook: Markup
@@ -118,9 +120,12 @@ HINT: Use ```HAVING SUM(lap_times)``` rather than an alias <br>
 for the code to work correctly.
 
 -- SQLBook: Code
+-- Active: 1794502311783@@127.0.0.1@5432@postgres
 
-# Write your own code
-
+SELECT nationality
+FROM homework_data
+GROUP BY nationality
+HAVING SUM(lap_times) > 150;
 
 
 
@@ -144,8 +149,17 @@ $\qquad$ <img src="figures/codebook_lap_times.png" alt="drawing" width="350"/>
 HINT: To insert a string value, use 'single quotations'
 
 -- SQLBook: Code
--- Write your own code
+-- Active: 1794502311783@@127.0.0.1@5432@postgres
 
+DROP TABLE IF EXISTS lap_times;
 
+CREATE TABLE lap_times(
+    raceId int,
+    driverId int,
+    lap int,
+    position int,
+    time varchar(255),
+    milliseconds int
+);
 
-
+INSERT INTO lap_times VALUES (1, 1, 1, 1, '1:23.456', 83456);
